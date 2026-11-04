@@ -2324,14 +2324,14 @@ starkbank-ecdsa = ">=2.0.1"
 
 [[package]]
 name = "serpapi"
-version = "0.1.5"
+version = "1.2.0"
 description = "The official Python client for SerpApi.com."
 optional = false
-python-versions = ">=3.6.0"
+python-versions = ">=3.6"
 groups = ["main"]
 files = [
-    {file = "serpapi-0.1.5-py2.py3-none-any.whl", hash = "sha256:6467b6adec1231059f754ccaa952b229efeaa8b9cae6e71f879703ec9e5bb3d1"},
-    {file = "serpapi-0.1.5.tar.gz", hash = "sha256:b9707ed54750fdd2f62dc3a17c6a3fb7fa421dc37902fd65b2263c0ac765a1a5"},
+    {file = "serpapi-1.2.0-py3-none-any.whl", hash = "sha256:e9aee65c7ddf4e15d936cc22f4fe70edd47c9ed66596b18e8ddeb88b203d06e7"},
+    {file = "serpapi-1.2.0.tar.gz", hash = "sha256:16e7d5dd1c7bfd6817e3c4b7b6a7c2dd6e6142f0dec534cf76fa5474a93fe4a9"},
 ]
 
 [package.dependencies]
@@ -2339,6 +2339,7 @@ requests = "*"
 
 [package.extras]
 color = ["pygments"]
+docs = ["myst-parser (>=4,<5) ; python_version >= \"3.11\"", "sphinx (>=8.2,<9) ; python_version >= \"3.11\"", "sphinx-design (>=0.6,<1) ; python_version >= \"3.11\"", "sphinx-rtd-theme (>=3.1,<4) ; python_version >= \"3.11\""]
 test = ["pytest"]
 
 [[package]]
@@ -2835,4 +2836,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "c501ba689396b0318923eb20756de8612e23de1df31950556785657032de1bfd"
+content-hash = "9b70afd593e7beac7f679adf2f13e1bdeb2316719a882e992504d308541f73b9"
