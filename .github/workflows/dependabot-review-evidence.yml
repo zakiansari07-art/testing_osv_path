@@ -1,3 +1,4 @@
+
 name: Dependabot AI Review Evidence
 
 on:
@@ -15,17 +16,31 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
+
     steps:
-      # This job executes dependency installation and repository tests. It has
-      # no OpenAI or write-capable GitHub secret. The agent checkout is pinned
-      # through repository variables to a reviewed immutable commit SHA.
       - name: Checkout Dependabot head
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}
           ref: ${{ github.event.pull_request.head.sha }}
           path: workspace
+          fetch-depth: 0
           persist-credentials: false
+
+      - name: Verify Git history
+        working-directory: workspace
+        run: |
+          echo "=== Current commit ==="
+          git log -1 --oneline
+
+          echo "=== Available branches ==="
+          git branch -a
+
+          echo "=== Check main branch ==="
+          git show-ref refs/remotes/origin/main
+
+          echo "=== Find common ancestor ==="
+          git merge-base origin/main HEAD
 
       - name: Checkout the agent
         uses: actions/checkout@v4
