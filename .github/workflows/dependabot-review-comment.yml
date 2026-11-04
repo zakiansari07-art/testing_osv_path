@@ -9,6 +9,7 @@ permissions:
   actions: read
   contents: read
   issues: write
+  pull-requests: write
 
 jobs:
   comment:
@@ -20,7 +21,9 @@ jobs:
     permissions:
       actions: read
       contents: read
-      issues: write
+      issues: 
+      pull-requests: write
+
     steps:
       # workflow_run executes trusted workflow code from the default branch.
       # This job downloads JSON evidence only; it never checks out or executes
@@ -66,6 +69,21 @@ jobs:
 
       - name: Install the agent
         run: python -m pip install -r agent/requirements.txt
+
+      - name: Test GitHub API permissions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+        run: |
+          set -euo pipefail
+
+          echo "Testing GitHub API access..."
+
+          gh api \
+            "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+            --jq 'length'
+
+          echo "GitHub API comment access successful."
 
       - name: Generate and post the PR review
         env:
