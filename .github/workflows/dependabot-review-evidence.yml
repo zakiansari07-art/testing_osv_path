@@ -75,7 +75,7 @@ jobs:
           --report "$REPORT_PATH"
 
       - name: Upload review evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dependabot-review-${{ github.event.pull_request.number }}
           path: ${{ runner.temp }}/dependabot-review.json
