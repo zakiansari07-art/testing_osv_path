@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout Dependabot head
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ github.repository }}
           ref: ${{ github.event.pull_request.head.sha }}
@@ -43,7 +43,7 @@ jobs:
           git merge-base origin/main HEAD
 
       - name: Checkout the agent
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ vars.VULNERABILITY_AGENT_REPOSITORY }}
           ref: ${{ vars.VULNERABILITY_AGENT_COMMIT }}
