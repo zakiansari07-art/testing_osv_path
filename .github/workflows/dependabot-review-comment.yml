@@ -116,6 +116,7 @@ jobs:
       - name: Generate and post the PR review
         if: steps.verify-pr.outputs.is_dependabot == 'true'
         env:
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
           EXPECTED_PR: ${{ github.event.workflow_run.pull_requests[0].number }}
