@@ -122,6 +122,9 @@ jobs:
           EXPECTED_REPOSITORY: ${{ github.repository }}
           EXPECTED_HEAD_SHA: ${{ github.event.workflow_run.pull_requests[0].head.sha }}
           REPORT_ARTIFACT_URL: ${{ steps.report-artifact.outputs.url }}
+          LANGSMITH_TRACING: "true"
+          LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+          LANGSMITH_PROJECT: ${{ vars.LANGSMITH_PROJECT }}
         run: >-
           python agent/main.py
           --analyze-report evidence/dependabot-review.json
